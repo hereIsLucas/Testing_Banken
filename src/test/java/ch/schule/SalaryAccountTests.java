@@ -20,8 +20,8 @@ public class SalaryAccountTests
 	 */
 	@Test
 	@DisplayName("Constructs a SalaryAccount and tests a simple deposit")
-	public void test()
-	{
-		fail("ToDo");
+	public void test() {
+		SalaryAccount salaryAccount = new SalaryAccount("P-1000",-80);
+		assertTrue(salaryAccount.deposit(20130820,1000));
 	}
 }

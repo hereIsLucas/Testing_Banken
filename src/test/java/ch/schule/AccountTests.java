@@ -4,6 +4,8 @@ package ch.schule;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.TreeMap;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,7 +17,6 @@ import static org.junit.jupiter.api.Assertions.*;
  * @version 2.0
  */
 public class AccountTests {
-    TreeMap treeMap = new TreeMap<String, Long>();
     /**
      * Tested die Initialisierung eines Kontos.
      */
@@ -50,11 +51,14 @@ public class AccountTests {
     @Test
     @DisplayName("TreeMap of two Account-References should work")
     public void testReferences() {
+        TreeMap treeMap = new TreeMap<String, Long>();
+
         SalaryAccount myAccount = new SalaryAccount("0010", 5000);
-        SavingsAccount mySavingsAccount = new SavingsAccount("0010");
+        SavingsAccount mySavingsAccount = new SavingsAccount("0011");
 
         treeMap.put(myAccount.getId(), myAccount.getBalance());
         treeMap.put(mySavingsAccount.getId(), mySavingsAccount.getBalance());
+
 
         assertNotNull(treeMap.get(myAccount.getId()));
         assertNotNull(treeMap.get(mySavingsAccount.getId()));
@@ -63,14 +67,16 @@ public class AccountTests {
     @Test
     @DisplayName("TreeMap of two Account-References should work")
     public void testCanTransact() {
-        SalaryAccount myAccount = new SalaryAccount("0010", 5000);
-        SavingsAccount mySavingsAccount = new SavingsAccount("0010");
+        TreeMap treeMap = new TreeMap<String, Long>();
+        TreeMap transactMap = new TreeMap<String, Boolean>();
 
-        treeMap.put(myAccount.getId(), myAccount.getBalance());
+        SalaryAccount myAccount = new SalaryAccount("0010", 5000);
+        SavingsAccount mySavingsAccount = new SavingsAccount("0011");
+
+        transactMap.put(myAccount.getId(), myAccount.canTransact(190813));
         treeMap.put(mySavingsAccount.getId(), mySavingsAccount.getBalance());
 
-        assertNotNull(treeMap.get(myAccount.getId()));
-        assertNotNull(treeMap.get(mySavingsAccount.getId()));
+        assertEquals(myAccount.canTransact(190813), transactMap.get(myAccount.getId()));
     }
 
     /**
@@ -79,7 +85,10 @@ public class AccountTests {
     @Test
     @DisplayName("Not a real test, it prints a list of bookings")
     public void testPrint() {
-        fail("ToDo");
+        SalaryAccount myAccount = new SalaryAccount("hallo", 5000);
+        Booking book1 = new Booking(190813, 50);
+        Booking book2 = new Booking(190813, 50);
+        assertDoesNotThrow(() -> myAccount.print());
     }
 
     /**

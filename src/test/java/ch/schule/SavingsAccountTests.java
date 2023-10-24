@@ -27,9 +27,9 @@ public class SavingsAccountTests
 {
 	@Test
 	@DisplayName("Constructs a SavingsAccount and tests a simple deposit")
-	public void test()
-	{
-		fail("ToDo");
+	public void test() {
+		SavingsAccount savingsAccount = new SavingsAccount("S-1000");
+		assertTrue(savingsAccount.deposit(20130820,1000));
 	}
 }
 

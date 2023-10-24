@@ -21,9 +21,9 @@ public class BookingTests
 	 */
 	@Test
 	@DisplayName("Construct Simple Booking, should work ")
-	public void testInitialization()
-	{
-		fail("ToDo");
+	public void testInitialization() {
+		Booking myBooking = new Booking(20130820,100);
+		assertEquals(20130820, myBooking.getDate());
 	}
 
 	/**
@@ -33,6 +33,7 @@ public class BookingTests
 	@DisplayName("Not a real test, it prints a list of bookings")
 	public void testPrint()
 	{
-		fail("ToDo");
+		Booking myBooking = new Booking(20130820, 100);
+		myBooking.print(100);
 	}
 }

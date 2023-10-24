@@ -1,11 +1,11 @@
 package ch.schule;
 
 import ch.schule.PromoYouthSavingsAccount;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Tests für das Promo-Jugend-Sparkonto.
@@ -20,8 +20,8 @@ public class PromoYouthSavingsAccountTests
 	 */
 	@Test
 	@DisplayName("Constructs a PromoYouthSavingsAccount and tests a simple deposit")
-	public void test()
-	{
-		fail("ToDo");
+	public void test(){
+		PromoYouthSavingsAccount promoYouthSavingsAccount = new PromoYouthSavingsAccount("Y-1000");
+		Assertions.assertTrue(promoYouthSavingsAccount.deposit(20130820,100));
 	}
 }
