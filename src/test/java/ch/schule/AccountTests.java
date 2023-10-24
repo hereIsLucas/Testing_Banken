@@ -4,9 +4,7 @@ package ch.schule;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-
 import java.util.TreeMap;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -17,15 +15,15 @@ import static org.junit.jupiter.api.Assertions.*;
  * @version 2.0
  */
 public class AccountTests {
+    TreeMap treeMap = new TreeMap<String, Long>();
     /**
      * Tested die Initialisierung eines Kontos.
      */
     @Test
     @DisplayName("Simple constructor-Test for SavingsAccount should work")
     public void testInit() {
-        Account myAccount = new Account();
-       assertEquals(myAccount, "Account object found");
-        fail("ToDo");
+        SavingsAccount myAccount = new SavingsAccount("hallo");
+        assertNotNull(myAccount, "Account object found");
     }
 
     /**
@@ -34,8 +32,8 @@ public class AccountTests {
     @Test
     @DisplayName("Simple deposit on SavingsAccount should work")
     public void testDeposit() {
-
-        fail("ToDo");
+        SavingsAccount myAccount = new SavingsAccount("hallo");
+        assertTrue(myAccount.deposit(190813, 418), "true" );
     }
 
     /**
@@ -44,19 +42,35 @@ public class AccountTests {
     @Test
     @DisplayName("Simple withdraw from SalaryAccount should work")
     public void testWithdraw() {
-        fail("ToDo");
+        SalaryAccount myAccount = new SalaryAccount("hallo", 5000);
+        assertFalse(myAccount.withdraw(190813, 0));
+
     }
 
     @Test
     @DisplayName("TreeMap of two Account-References should work")
     public void testReferences() {
-        fail("ToDo");
-    }
+        SalaryAccount myAccount = new SalaryAccount("0010", 5000);
+        SavingsAccount mySavingsAccount = new SavingsAccount("0010");
 
+        treeMap.put(myAccount.getId(), myAccount.getBalance());
+        treeMap.put(mySavingsAccount.getId(), mySavingsAccount.getBalance());
+
+        assertNotNull(treeMap.get(myAccount.getId()));
+        assertNotNull(treeMap.get(mySavingsAccount.getId()));
+
+    }
     @Test
     @DisplayName("TreeMap of two Account-References should work")
     public void testCanTransact() {
-        fail("ToDo");
+        SalaryAccount myAccount = new SalaryAccount("0010", 5000);
+        SavingsAccount mySavingsAccount = new SavingsAccount("0010");
+
+        treeMap.put(myAccount.getId(), myAccount.getBalance());
+        treeMap.put(mySavingsAccount.getId(), mySavingsAccount.getBalance());
+
+        assertNotNull(treeMap.get(myAccount.getId()));
+        assertNotNull(treeMap.get(mySavingsAccount.getId()));
     }
 
     /**
