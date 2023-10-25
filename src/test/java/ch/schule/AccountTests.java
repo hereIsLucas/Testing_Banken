@@ -4,8 +4,7 @@ package ch.schule;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
+
 import java.util.TreeMap;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -97,7 +96,10 @@ public class AccountTests {
     @Test
     @DisplayName("Not a real test, it prints a list of bookings")
     public void testMonthlyPrint() {
-        fail("ToDo");
+        SalaryAccount myAccount = new SalaryAccount("hallo", 5000);
+        Booking book1 = new Booking(190813, 50);
+        Booking book2 = new Booking(190813, 50);
+        myAccount.print();
     }
 
 }

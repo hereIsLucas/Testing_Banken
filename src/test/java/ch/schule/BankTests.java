@@ -128,7 +128,6 @@ public class BankTests {
         bank.deposit("S-1000",20130820,100);
 
         bank.printBottom5();
-        fail("ToDo");
     }
 
 }
